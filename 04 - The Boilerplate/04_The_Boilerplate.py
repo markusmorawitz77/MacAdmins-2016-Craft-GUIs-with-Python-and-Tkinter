@@ -1,5 +1,4 @@
-import Tkinter as tk
-import AppKit
+import tkinter as tk
 
 
 class App(tk.Frame):
@@ -14,8 +13,8 @@ class App(tk.Frame):
         self.master.bind('<Return>', self.click_ok)
         self.master.bind('<Escape>', self.click_cancel)
 
-        x = (self.master.winfo_screenwidth() - self.master.winfo_reqwidth()) / 2
-        y = (self.master.winfo_screenheight() - self.master.winfo_reqheight()) / 3
+        x = (self.master.winfo_screenwidth() - self.master.winfo_reqwidth()) // 2
+        y = (self.master.winfo_screenheight() - self.master.winfo_reqheight()) // 3
         self.master.geometry("+{}+{}".format(x, y))
 
         self.master.config(menu=tk.Menu(self.master))
@@ -41,12 +40,8 @@ class App(tk.Frame):
 
 
 if __name__ == '__main__':
-    info = AppKit.NSBundle.mainBundle().infoDictionary()
-    info['LSUIElement'] = True
-
     root = tk.Tk()
     app = App(root)
-    AppKit.NSApplication.sharedApplication().activateIgnoringOtherApps_(True)
     app.mainloop()
 
 """
