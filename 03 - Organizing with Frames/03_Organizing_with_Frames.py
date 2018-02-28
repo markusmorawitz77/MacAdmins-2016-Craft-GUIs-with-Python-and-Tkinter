@@ -1,5 +1,4 @@
-import Tkinter as tk
-import AppKit
+import tkinter as tk
 
 
 class App(tk.Frame):
@@ -10,8 +9,8 @@ class App(tk.Frame):
         self.master.resizable(False, False)
         self.master.tk_setPalette(background='#ececec')
 
-        x = (self.master.winfo_screenwidth() - self.master.winfo_reqwidth()) / 2
-        y = (self.master.winfo_screenheight() - self.master.winfo_reqheight()) / 3
+        x = (self.master.winfo_screenwidth() - self.master.winfo_reqwidth()) // 2
+        y = (self.master.winfo_screenheight() - self.master.winfo_reqheight()) // 3
         self.master.geometry("+{}+{}".format(x, y))
 
         self.master.config(menu=tk.Menu(self.master))
@@ -39,7 +38,6 @@ class App(tk.Frame):
 if __name__ == '__main__':
     root = tk.Tk()
     app = App(root)
-    AppKit.NSApplication.sharedApplication().activateIgnoringOtherApps_(True)
     app.mainloop()
 
 """
