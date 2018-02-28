@@ -1,7 +1,6 @@
-import Tkinter as tk
-import AppKit
-import tkFileDialog
-import ttk
+import tkinter as tk
+import tkinter.filedialog as tkFileDialog
+import tkinter.ttk as ttk
 import time
 
 
@@ -17,8 +16,8 @@ class App(tk.Frame):
 
         self.grid(row=0, column=0)
 
-        x = (self.master.winfo_screenwidth() - self.master.winfo_reqwidth()) / 2
-        y = (self.master.winfo_screenheight() - self.master.winfo_reqheight()) / 3
+        x = (self.master.winfo_screenwidth() - self.master.winfo_reqwidth()) // 2
+        y = (self.master.winfo_screenheight() - self.master.winfo_reqheight()) // 3
         self.master.geometry("+{}+{}".format(x, y))
 
         self.master.config(menu=tk.Menu(self.master))
@@ -73,7 +72,7 @@ class App(tk.Frame):
             for path in self.selected_files:
                 loading.progress['value'] += 1
                 self.update()
-                print 'File {}/{}'.format(loading.progress['value'], loading.progress['maximum'])
+                print('File {}/{}'.format(loading.progress['value'], loading.progress['maximum']))
                 time.sleep(2)
                 with open(path) as f:
                     print('Opened file: {}: {}'.format(path, f))
@@ -107,12 +106,8 @@ class LoadingFrame(tk.Frame):
 
 
 if __name__ == '__main__':
-    info = AppKit.NSBundle.mainBundle().infoDictionary()
-    info['LSUIElement'] = True
-
     root = tk.Tk()
     app = App(root)
-    AppKit.NSApplication.sharedApplication().activateIgnoringOtherApps_(True)
     app.mainloop()
 
 """
