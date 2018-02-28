@@ -9,11 +9,9 @@ class App(tk.Frame):
         self.master.resizable(False, False)
         self.master.tk_setPalette(background='#ececec')  # '#ececec' is the standard gray background of El Capitain
 
-        w = self.master.winfo_reqwidth()
-        h = self.master.winfo_reqheight()
-        x = (self.master.winfo_screenwidth() - w) // 2
-        y = (self.master.winfo_screenheight() - h) // 3
-        self.master.geometry("{}x{}+{}+{}".format(w,h,x, y))
+        x = (self.master.winfo_screenwidth() - self.master.winfo_reqwidth()) // 2
+        y = (self.master.winfo_screenheight() - self.master.winfo_reqheight()) // 3
+        self.master.geometry("+{}+{}".format(x, y))
 
         self.master.config(menu=tk.Menu(self))
 
